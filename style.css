@@ -1,0 +1,8 @@
+.grid-movies{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+#cargar{
+  margin-left: 1em;
+  width: fit-content;
+}

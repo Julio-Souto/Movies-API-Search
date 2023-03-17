@@ -1,0 +1,76 @@
+{
+  "Search": [
+      {
+          "Title": "Monogatari Series: Second Season",
+          "Year": "2013",
+          "imdbID": "tt2922300",
+          "Type": "series",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BMzRjNDRlYjItYmRmMy00ZmExLWFlYzgtN2QyYjlmYmQ3MjI3XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg"
+      },
+      {
+          "Title": "Ore Monogatari!!",
+          "Year": "2015",
+          "imdbID": "tt4616700",
+          "Type": "series",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BMzUxZDhmN2EtNzU0NS00YzRkLWJhYWEtYTQ2MzdjOTFlZTY4XkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_SX300.jpg"
+      },
+      {
+          "Title": "One Piece: Episode of Merry - Mou Hitori no Nakama no Monogatari",
+          "Year": "2013",
+          "imdbID": "tt3354352",
+          "Type": "movie",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BZTgxYTQ0ZGMtNTVkZC00ZDNiLWJiMzAtZGZiMWM1ZjJlNDU2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
+      },
+      {
+          "Title": "Ai no wakakusa monogatari",
+          "Year": "1987",
+          "imdbID": "tt0168283",
+          "Type": "series",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BMTc3NzEwODM1OF5BMl5BanBnXkFtZTYwNTcxOTk4._V1_SX300.jpg"
+      },
+      {
+          "Title": "Arupusu monogatari watashi no annetto",
+          "Year": "1983",
+          "imdbID": "tt0168297",
+          "Type": "series",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BNDA5MDQ2YTMtMjEyOS00OGU0LTgxZWYtZGQ3NmM3MmYwYWFhXkEyXkFqcGdeQXVyMTQ3Njg3MQ@@._V1_SX300.jpg"
+      },
+      {
+          "Title": "Periinu monogatari",
+          "Year": "1978",
+          "imdbID": "tt0168362",
+          "Type": "series",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BMTc2NTYyNjUyMV5BMl5BanBnXkFtZTcwMjE5NzQ5MQ@@._V1_SX300.jpg"
+      },
+      {
+          "Title": "Konjaku monogatari: The new edition",
+          "Year": "2007",
+          "imdbID": "tt1028548",
+          "Type": "movie",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BZDc0YTc5YTItYmQ1Mi00ODA1LTliMDctZTkwNDRjYmY2YWJjXkEyXkFqcGdeQXVyMzM1OTMzNDA@._V1_SX300.jpg"
+      },
+      {
+          "Title": "Crayon Shin-chan Movie 23: Ora No Hikkoshi Monogatari - Saboten Daisuugeki",
+          "Year": "2015",
+          "imdbID": "tt4691348",
+          "Type": "movie",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BYTU1Njk0YjUtOTYxYi00MDc5LWI3MjItZTVjZGZlOWYyZmVlXkEyXkFqcGdeQXVyNjYwMjkwMjg@._V1_SX300.jpg"
+      },
+      {
+          "Title": "Torappu ikka monogatari",
+          "Year": "1991",
+          "imdbID": "tt0168393",
+          "Type": "series",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTgyOTgyMl5BMl5BanBnXkFtZTcwNTk0NDgxMQ@@._V1_SX300.jpg"
+      },
+      {
+          "Title": "Yôtô monogatari: hana no Yoshiwara hyakunin-giri",
+          "Year": "1960",
+          "imdbID": "tt0187119",
+          "Type": "movie",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BNjZlNzU5NjktYjJmMi00YjQ5LThlZTYtODI5M2FjOGI3NGExXkEyXkFqcGdeQXVyMjU0MzQ1NzQ@._V1_SX300.jpg"
+      }
+  ],
+  "totalResults": "571",
+  "Response": "True"
+}

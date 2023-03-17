@@ -12,14 +12,35 @@ const APIKEY = "?apikey=bb557db"
 let uri = URL+""+APIKEY+"&s="
 
 function searchPeliculas(){
+  document.getElementById("cargar").setAttribute("aria-busy",true)
   fetch(uri + document.getElementById("search").value.trim())
-  .then((response) => {return response.json()})
+  .then((response) => {
+    return response.json()
+  })
   .then((data) => {
     if(data!==null)
       document.querySelector(".grid-movies").innerHTML = cargarPeliculas(data).join("")
     else
       document.querySelector(".grid-movies").innerHTML = `<p>Error desconocido</p>`
+    document.getElementById("cargar").removeAttribute("aria-busy")
   })
+  .catch((error) => {
+    console.log(error)
+    document.getElementById("cargar").removeAttribute("aria-busy")
+  })
+}
+
+async function searchAsync(){
+  document.getElementById("cargar").setAttribute("aria-busy",true)
+  const response = await fetch(uri + document.getElementById("search").value.trim())
+  const data = await response.json()
+
+  if(data!==null)
+    document.querySelector(".grid-movies").innerHTML = cargarPeliculas(data).join("")
+  else
+    document.querySelector(".grid-movies").innerHTML = `<p>Error desconocido</p>`
+
+  document.getElementById("cargar").removeAttribute("aria-busy")
 }
 
 function cargarPeliculas(search){
@@ -32,11 +53,8 @@ function cargarPeliculas(search){
     })
     return figureElements
   }
-  else if(search.Error==="Movie not found!"){
-    return [`<p>${notfound.Error}</p>`,`<p>${notfound.Response}</p>`]
-  }
   else{
-    return [`<p>${error.Error}</p>`,`<p>${error.Response}</p>`]
+    return [`<p>${search.Error}</p>`,`<p>${search.Response}</p>`]
   }
 }
 
@@ -55,16 +73,22 @@ function mainApp(){
   })
 
   document.getElementById("cargar").addEventListener("click", () => {
-    searchPeliculas()
+    try {
+      searchAsync()
+    } catch (error) {
+      console.log(error)
+    } finally{
+      
+    }
   })
 
 }
 
 mainApp()
 
-const ejemplo = `
-{
-  "nombre" : "Nombre"
-}`
+// const ejemplo = `
+// {
+//   "nombre" : "Nombre"
+// }`
 
-console.log(error,JSON.parse(ejemplo))
+// console.log(error,JSON.parse(ejemplo))

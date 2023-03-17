@@ -6,7 +6,7 @@ import movies from './mocks/movies-search.json'
 import viewgrid from './grid-movies.html?raw'
 
 const app = document.querySelector('#app')
-const URL = "http://www.omdbapi.com/"
+const URL = "https://www.omdbapi.com/"
 const APIKEY = "?apikey=bb557db"
 
 let uri = URL+""+APIKEY+"&s="

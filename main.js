@@ -11,7 +11,9 @@ const URL = "https://www.omdbapi.com/"
 const APIKEY = "?apikey=bb557db"
 let content = null
 let button = null
+let siguiente = null
 let form = null
+let page = 1
 
 let uri = URL+""+APIKEY+"&s="
 
@@ -35,6 +37,7 @@ function searchPeliculas(){
 }
 
 async function searchAsync(){
+  page=1
   button.setAttribute("aria-busy",true)
   const response = await fetch(uri + document.getElementById("search").value.trim())
   const data = await response.json()
@@ -45,6 +48,20 @@ async function searchAsync(){
     content.innerHTML = `<p>Error desconocido</p>`
 
   button.removeAttribute("aria-busy")
+}
+
+async function nextPage(){
+  page++
+  siguiente.setAttribute("aria-busy",true)
+  const response = await fetch(uri + document.getElementById("search").value.trim()+"&page="+page)
+  const data = await response.json()
+
+  if(data!==null)
+    content.innerHTML = cargarPeliculas(data).join("")
+  else
+    content.innerHTML = `<p>Error desconocido</p>`
+
+  siguiente.removeAttribute("aria-busy")
 }
 
 function cargarPeliculas(search){
@@ -74,6 +91,7 @@ function mainApp(){
   `
   content = document.querySelector(".grid-movies")
   button = document.getElementById("cargar")
+  siguiente = document.getElementById("siguiente")
   form = document.getElementById("myForm")
 
   form.addEventListener("submit", (e) => {
@@ -99,7 +117,13 @@ function mainApp(){
       
     }
   })
-
+  siguiente.addEventListener("click", () => {
+    try {
+      nextPage()
+    } catch (error) {
+      console.log(error)
+    }
+  })
 }
 
 mainApp()

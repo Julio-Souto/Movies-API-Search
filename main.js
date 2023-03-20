@@ -1,5 +1,6 @@
 import '@picocss/pico'
 import './style.css'
+import debounce from 'just-debounce-it'
 import error from './mocks/movies-error.json'
 import notfound from './mocks/movies-not-found.json'
 import movies from './mocks/movies-search.json'
@@ -8,39 +9,42 @@ import viewgrid from './grid-movies.html?raw'
 const app = document.querySelector('#app')
 const URL = "https://www.omdbapi.com/"
 const APIKEY = "?apikey=bb557db"
+let content = null
+let button = null
+let form = null
 
 let uri = URL+""+APIKEY+"&s="
 
 function searchPeliculas(){
-  document.getElementById("cargar").setAttribute("aria-busy",true)
+  button.setAttribute("aria-busy",true)
   fetch(uri + document.getElementById("search").value.trim())
   .then((response) => {
     return response.json()
   })
   .then((data) => {
     if(data!==null)
-      document.querySelector(".grid-movies").innerHTML = cargarPeliculas(data).join("")
+      content.innerHTML = cargarPeliculas(data).join("")
     else
-      document.querySelector(".grid-movies").innerHTML = `<p>Error desconocido</p>`
-    document.getElementById("cargar").removeAttribute("aria-busy")
+      content.innerHTML = `<p>Error desconocido</p>`
+    button.removeAttribute("aria-busy")
   })
   .catch((error) => {
     console.log(error)
-    document.getElementById("cargar").removeAttribute("aria-busy")
+    button.removeAttribute("aria-busy")
   })
 }
 
 async function searchAsync(){
-  document.getElementById("cargar").setAttribute("aria-busy",true)
+  button.setAttribute("aria-busy",true)
   const response = await fetch(uri + document.getElementById("search").value.trim())
   const data = await response.json()
 
   if(data!==null)
-    document.querySelector(".grid-movies").innerHTML = cargarPeliculas(data).join("")
+    content.innerHTML = cargarPeliculas(data).join("")
   else
-    document.querySelector(".grid-movies").innerHTML = `<p>Error desconocido</p>`
+    content.innerHTML = `<p>Error desconocido</p>`
 
-  document.getElementById("cargar").removeAttribute("aria-busy")
+  button.removeAttribute("aria-busy")
 }
 
 function cargarPeliculas(search){
@@ -68,13 +72,27 @@ function mainApp(){
       <div id="peliculas">${viewgrid}</div>
     </div>
   `
-  document.getElementById("myForm").addEventListener("submit", (e) => {
+  content = document.querySelector(".grid-movies")
+  button = document.getElementById("cargar")
+  form = document.getElementById("myForm")
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault()
   })
 
-  document.getElementById("cargar").addEventListener("click", () => {
+  const d1 = debounce(() => {
+    searchAsync()
+  },300)
+
+  form.addEventListener("input", d1)
+
+  button.addEventListener("click", () => {
     try {
-      searchAsync()
+      let id
+      clearTimeout(id)
+      id = setTimeout(() => {
+        searchAsync()
+      },300)
     } catch (error) {
       console.log(error)
     } finally{

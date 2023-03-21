@@ -14,6 +14,7 @@ let button = null
 let siguiente = null
 let form = null
 let page = 1
+let totalPages = 1
 
 let uri = URL+""+APIKEY+"&s="
 
@@ -50,10 +51,10 @@ async function searchAsync(){
   button.removeAttribute("aria-busy")
 }
 
-async function nextPage(){
-  page++
+async function nextPage(pages){
   siguiente.setAttribute("aria-busy",true)
-  const response = await fetch(uri + document.getElementById("search").value.trim()+"&page="+page)
+  anterior.setAttribute("aria-busy",true)
+  const response = await fetch(uri + document.getElementById("search").value.trim()+"&page="+pages)
   const data = await response.json()
 
   if(data!==null)
@@ -62,10 +63,14 @@ async function nextPage(){
     content.innerHTML = `<p>Error desconocido</p>`
 
   siguiente.removeAttribute("aria-busy")
+  anterior.removeAttribute("aria-busy")
 }
 
 function cargarPeliculas(search){
   if(search.Response==="True"){
+    if(search.totalResults>10)
+      totalPages=Math.ceil(Number(search.totalResults)/10)
+    document.getElementById("totalPages").innerHTML = page+"/"+totalPages
     const figureElements = search.Search.map((movie) => {
       return `<figure>
         <img src="${movie.Poster}" alt="${movie.Type}">
@@ -92,6 +97,7 @@ function mainApp(){
   content = document.querySelector(".grid-movies")
   button = document.getElementById("cargar")
   siguiente = document.getElementById("siguiente")
+  anterior = document.getElementById("anterior")
   form = document.getElementById("myForm")
 
   form.addEventListener("submit", (e) => {
@@ -119,7 +125,18 @@ function mainApp(){
   })
   siguiente.addEventListener("click", () => {
     try {
-      nextPage()
+      if(page<totalPages)
+        nextPage(++page)
+      console.log(page)
+    } catch (error) {
+      console.log(error)
+    }
+  })
+  anterior.addEventListener("click", () => {
+    try {
+      if(page>1)
+        nextPage(--page)
+      console.log(page)
     } catch (error) {
       console.log(error)
     }

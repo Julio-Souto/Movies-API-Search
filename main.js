@@ -1,4 +1,4 @@
-import '@picocss/pico'
+import './node_modules/@picocss/pico'
 import './style.css'
 import debounce from 'just-debounce-it'
 import error from './mocks/movies-error.json'

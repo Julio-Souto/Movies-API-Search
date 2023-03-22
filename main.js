@@ -70,11 +70,13 @@ function cargarPeliculas(search){
   if(search.Response==="True"){
     if(search.totalResults>10)
       totalPages=Math.ceil(Number(search.totalResults)/10)
+    else
+      totalPages = 1
     document.getElementById("totalPages").innerHTML = page+"/"+totalPages
     const figureElements = search.Search.map((movie) => {
       return `<figure>
         <img src="${movie.Poster}" alt="${movie.Type}">
-        <figcaption>${movie.Title}<time>${movie.Year}</time></figcaption>
+        <figcaption>${movie.Title}<time> ${movie.Year}</time></figcaption>
       </figure>`
     })
     return figureElements

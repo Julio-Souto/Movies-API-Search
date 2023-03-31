@@ -19,3 +19,23 @@
 .pages{
   margin-top: 1em;
 }
+.grid{
+  justify-items: center;
+}
+#search{
+  width: 100%;
+}
+#myForm{
+  align-self: center;
+  grid-template-columns: 70% 30%;
+  width: 60%;
+}
+#peliculas{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h1{
+  align-self: center;
+  text-decoration: underline;
+}

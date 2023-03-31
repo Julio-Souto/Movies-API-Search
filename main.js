@@ -92,8 +92,10 @@ function mainApp(){
 
   app.innerHTML = `
     <div class="container">
-      <h1>Hello Vite!</h1>
-      <div id="peliculas">${viewgrid}</div>
+      <div id="peliculas">
+      <h1>Buscador de peliculas</h1>
+      ${viewgrid}
+      </div>
     </div>
   `
   content = document.querySelector(".grid-movies")

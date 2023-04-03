@@ -1,8 +1,9 @@
 .grid-movies{
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 2em;
+  margin-top: 1em;
 }
 #cargar{
   margin-left: 1em;
@@ -18,6 +19,7 @@
 }
 .pages{
   margin-top: 1em;
+  align-items: center;
 }
 .grid{
   justify-items: center;
@@ -38,4 +40,5 @@
 h1{
   align-self: center;
   text-decoration: underline;
+  margin-top: 1em;
 }

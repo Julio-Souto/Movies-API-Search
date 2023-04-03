@@ -12,6 +12,7 @@ const APIKEY = "?apikey=bb557db"
 let content = null
 let button = null
 let siguiente = null
+let anterior = null
 let form = null
 let page = 1
 let totalPages = 1
@@ -72,7 +73,7 @@ function cargarPeliculas(search){
       totalPages=Math.ceil(Number(search.totalResults)/10)
     else
       totalPages = 1
-    document.getElementById("totalPages").innerHTML = page+"/"+totalPages
+    document.getElementById("totalPages").innerHTML = "Páginas: "+page+"/"+totalPages+" - "+search.totalResults+" Resultados totales"
     const figureElements = search.Search.map((movie) => {
       return `<figure>
         <img src="${movie.Poster}" alt="${movie.Type}">
@@ -100,8 +101,8 @@ function mainApp(){
   `
   content = document.querySelector(".grid-movies")
   button = document.getElementById("cargar")
-  siguiente = document.getElementById("siguiente")
   anterior = document.getElementById("anterior")
+  siguiente = document.getElementById("siguiente")
   form = document.getElementById("myForm")
 
   form.addEventListener("submit", (e) => {
